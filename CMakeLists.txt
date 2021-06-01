@@ -14,6 +14,7 @@ message(STATUS "Building with ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION}
 include(${CMAKE_SOURCE_DIR}/CMakeLists.quickjs.txt)
 
 add_executable(njk
+    quickjs/quickjs-libc.c
     main.c
 )
 
