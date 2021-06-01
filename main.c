@@ -1,6 +1,8 @@
 
 #include "quickjs/quickjs-libc.h"
 
+extern const uint8_t mainjs[];
+extern const uint32_t mainjs_size;
 extern const uint8_t nunjucks[];
 extern const uint32_t nunjucks_size;
 
@@ -16,6 +18,7 @@ int main(int argc, char **argv) {
     js_std_add_helpers(ctx, argc, argv);
 
     js_std_eval_binary(ctx, nunjucks, nunjucks_size, 0);
+    js_std_eval_binary(ctx, mainjs, mainjs_size, 0);
 
     js_std_loop(ctx);
 
