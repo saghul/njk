@@ -16,6 +16,7 @@ include(${CMAKE_SOURCE_DIR}/CMakeLists.quickjs.txt)
 add_executable(njk
     quickjs/quickjs-libc.c
     main.c
+    nunjucks.c
 )
 
 set_target_properties(njk PROPERTIES

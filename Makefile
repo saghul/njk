@@ -17,4 +17,8 @@ clean:
 distclean:
 	@rm -rf $(BUILD_DIR)
 
-.PHONY: all build install clean distclean
+gen:
+	$(MAKE) -C quickjs qjsc -j4
+	./quickjs/qjsc -c -o nunjucks.c -N nunjucks nunjucks.min.js
+
+.PHONY: all build install clean distclean gen
