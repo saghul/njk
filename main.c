@@ -16,6 +16,8 @@ int main(int argc, char **argv) {
 
     ctx = JS_NewContext(rt);
     js_std_add_helpers(ctx, argc, argv);
+    js_init_module_std(ctx, "std");
+    js_init_module_os(ctx, "os");
 
     js_std_eval_binary(ctx, nunjucks, nunjucks_size, 0);
     js_std_eval_binary(ctx, mainjs, mainjs_size, 0);
