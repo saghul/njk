@@ -1,5 +1,5 @@
 BUILD_DIR=build
-BUILDTYPE?=Release
+BUILDTYPE?=MinSizeRel
 
 all: build
 
