@@ -23,6 +23,7 @@ add_executable(njk
 set_target_properties(njk PROPERTIES
     C_STANDARD 11
     C_STANDARD_REQUIRED ON
+    OUTPUT_NAME njk-$<LOWER_CASE:${CMAKE_SYSTEM_NAME}>-$<LOWER_CASE:${CMAKE_SYSTEM_PROCESSOR}>
 )
 
 target_link_libraries(njk qjs m)
