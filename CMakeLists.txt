@@ -26,4 +26,8 @@ set_target_properties(njk PROPERTIES
     OUTPUT_NAME njk-$<LOWER_CASE:${CMAKE_SYSTEM_NAME}>-$<LOWER_CASE:${CMAKE_SYSTEM_PROCESSOR}>
 )
 
-target_link_libraries(njk qjs m)
+target_compile_definitions(njk PRIVATE
+    _GNU_SOURCE
+)
+
+target_link_libraries(njk qjs m pthread dl)
