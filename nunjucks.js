@@ -816,16 +816,12 @@ function SafeString(val) {
   }
 
   this.val = val;
-  this.length = val.length;
+  Object.defineProperty(this, 'length', {
+    get: function () { return this.val.length; }
+  });
 }
 
-SafeString.prototype = Object.create(String.prototype, {
-  length: {
-    writable: true,
-    configurable: true,
-    value: 0
-  }
-});
+SafeString.prototype = Object.create(String.prototype);
 
 SafeString.prototype.valueOf = function valueOf() {
   return this.val;
