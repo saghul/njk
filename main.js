@@ -78,6 +78,7 @@ const templateName = realpath.slice(idx + 1);
 
 // Render with Nunjucks. The context is an object with a single key: "env".
 const env = std.getenviron();
+delete env['_'];
 const isDev = Boolean(env.NJK_DEV);
 const nenv = new nunjucks.Environment(new FSLoader(templateDir, { noCache: true }), { autoescape: false, dev: isDev });
 const res = nenv.render(templateName, { env });
