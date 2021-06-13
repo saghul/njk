@@ -1,0 +1,16 @@
+{% extends "base.njk" %}
+
+{% block header %}
+{{ super() }}
+BEGIN
+{% endblock %}
+
+{% block content %}
+{% for name, value in env -%}
+  ENV[{{ name }}] = {{ value }}
+{% endfor -%}
+{% endblock %}
+
+{% block footer %}
+END
+{% endblock %}
