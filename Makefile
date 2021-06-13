@@ -19,7 +19,7 @@ distclean:
 
 gen:
 	$(MAKE) -C quickjs qjsc -j4
-	./quickjs/qjsc -c -o nunjucks.c -N nunjucks nunjucks.min.js
+	./quickjs/qjsc -c -o nunjucks.c -N nunjucks nunjucks.js
 	./quickjs/qjsc -c -o main-js.c -N mainjs main.js
 
 .PHONY: all build install clean distclean gen
