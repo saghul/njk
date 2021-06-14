@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [[ ! $(uname -s) == "Darwin" ]]; then
     echo "This script must be run in macOS"
     exit 1
