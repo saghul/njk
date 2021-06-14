@@ -13,6 +13,7 @@ jobs:
       with:
         submodules: true
     - name: Build
+      uses: docker-practice/actions-setup-docker@master
       run: ./cross-build.sh
     - name: Release
       uses: softprops/action-gh-release@v1
