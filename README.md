@@ -22,6 +22,9 @@ runtime. The result is a statically linked binary which is < 1MB.
 
 Check the [Nunjucks documentation on templating](https://mozilla.github.io/nunjucks/templating.html).
 
+**NOTE:** Templates get a single context variable: `env` containing the environment
+variables.
+
 ## Similar tools
 
 * [frep](https://github.com/subchen/frep)
