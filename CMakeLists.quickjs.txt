@@ -48,3 +48,22 @@ target_include_directories(qjs PUBLIC quickjs)
 if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
     target_link_libraries(qjs atomic)
 endif()
+
+add_executable(qjsc
+    quickjs/qjsc.c
+    quickjs/quickjs-libc.c
+)
+
+set_target_properties(qjsc PROPERTIES
+    C_STANDARD 11
+    C_STANDARD_REQUIRED ON
+    EXCLUDE_FROM_ALL TRUE
+)
+
+target_compile_definitions(qjsc PRIVATE
+    _GNU_SOURCE
+    CONFIG_BIGNUM
+    CONFIG_VERSION="${QJS_VERSION_STR}"
+)
+
+target_link_libraries(qjsc qjs m pthread dl)
