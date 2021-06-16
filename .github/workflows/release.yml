@@ -13,6 +13,8 @@ jobs:
       with:
         submodules: true
     - uses: docker-practice/actions-setup-docker@master
+      with:
+        docker_buildx: false
     - name: Build
       run: ./cross-build.sh
     - name: Release
