@@ -18,6 +18,7 @@ distclean:
 	@rm -rf $(BUILD_DIR)
 
 build/qjsc:
+	@mkdir -p $(BUILD_DIR)
 	$(MAKE) -C $(BUILD_DIR) qjsc -j4
 
 gen: build/qjsc
