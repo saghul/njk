@@ -1,4 +1,5 @@
 BUILD_DIR=build
+QJSC_BUILD_DIR=quickjs
 BUILDTYPE?=MinSizeRel
 
 all: build
@@ -18,11 +19,10 @@ distclean:
 	@rm -rf $(BUILD_DIR)
 
 build/qjsc:
-	@mkdir -p $(BUILD_DIR)
-	$(MAKE) -C $(BUILD_DIR) qjsc -j4
+	$(MAKE) -C $(QJSC_BUILD_DIR) qjsc -j4
 
 gen: build/qjsc
-	$(BUILD_DIR)/qjsc -c -o nunjucks.c -N nunjucks nunjucks.js
-	$(BUILD_DIR)/qjsc -c -o main-js.c -N mainjs main.js
+	$(QJSC_BUILD_DIR)/qjsc -c -o nunjucks.c -N nunjucks nunjucks.js
+	$(QJSC_BUILD_DIR)/qjsc -c -o main-js.c -N mainjs main.js
 
 .PHONY: all build install clean distclean gen
