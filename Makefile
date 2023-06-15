@@ -3,9 +3,7 @@ BUILDTYPE?=MinSizeRel
 
 all: build
 
-build:
-	@mkdir -p $(BUILD_DIR)
-	cd $(BUILD_DIR); cmake ../ -DCMAKE_BUILD_TYPE=$(BUILDTYPE)
+build: build/Makefile
 	$(MAKE) -C $(BUILD_DIR) -j4
 
 install:
@@ -17,7 +15,11 @@ clean:
 distclean:
 	@rm -rf $(BUILD_DIR)
 
-build/qjsc:
+build/Makefile:
+	@mkdir -p $(BUILD_DIR)
+	cd $(BUILD_DIR); cmake ../ -DCMAKE_BUILD_TYPE=$(BUILDTYPE)
+
+build/qjsc: build/Makefile
 	$(MAKE) -C $(BUILD_DIR) qjsc -j4
 
 gen: build/qjsc
