@@ -11,7 +11,7 @@ endif()
 message(STATUS "Building in ${CMAKE_BUILD_TYPE} mode")
 message(STATUS "Building with ${CMAKE_C_COMPILER_ID} ${CMAKE_C_COMPILER_VERSION} on ${CMAKE_SYSTEM}")
 
-include(${CMAKE_SOURCE_DIR}/CMakeLists.quickjs.txt)
+include(${CMAKE_SOURCE_DIR}/quickjs.cmake)
 
 add_executable(njk
     quickjs/quickjs-libc.c

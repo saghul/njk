@@ -8,6 +8,7 @@ if(CMAKE_C_COMPILER_ID MATCHES "AppleClang|Clang")
         -Wno-missing-field-initializers
         -Wno-unused-parameter
         -Wno-unused-variable
+        -Wno-unused-but-set-variable
         -funsigned-char)
 else()
     list(APPEND qjs_cflags
