@@ -1,10 +1,11 @@
 BUILD_DIR=build
 BUILDTYPE?=MinSizeRel
+JOBS?=$(shell nproc)
 
 all: build
 
 build: build/Makefile
-	$(MAKE) -C $(BUILD_DIR) -j4
+	$(MAKE) -C $(BUILD_DIR) -j$(JOBS)
 
 install:
 	@$(MAKE) -C $(BUILD_DIR) install
@@ -20,7 +21,7 @@ build/Makefile:
 	cd $(BUILD_DIR); cmake ../ -DCMAKE_BUILD_TYPE=$(BUILDTYPE)
 
 build/qjsc: build/Makefile
-	$(MAKE) -C $(BUILD_DIR) qjsc -j4
+	$(MAKE) -C $(BUILD_DIR) qjsc -j$(JOBS)
 
 gen: build/qjsc
 	$(BUILD_DIR)/qjsc -c -o nunjucks.c -N nunjucks nunjucks.js
