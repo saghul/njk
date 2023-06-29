@@ -17,10 +17,6 @@ function exitIfError(errno) {
     }
 }
 
-function toJSON(str) {
-    return JSON.parse(str);
-}
-
 
 // Template loader for Nunjucks.
 //
@@ -85,7 +81,9 @@ const env = std.getenviron();
 delete env['_'];
 const isDev = Boolean(env.NJK_DEV);
 const nenv = new nunjucks.Environment(new FSLoader(templateDir, { noCache: true }), { autoescape: false, dev: isDev });
-nenv.addFilter('toJSON', toJSON);
+
+nenv.addFilter('toJSON', txt => JSON.parse(txt));
+
 const res = nenv.render(templateName, { env });
 
 std.out.puts(res);
