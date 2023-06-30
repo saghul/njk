@@ -44,9 +44,6 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
 endif()
 
 target_include_directories(qjs PUBLIC quickjs)
-if ("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-    target_link_libraries(qjs atomic)
-endif()
 
 add_executable(qjsc
     quickjs/qjsc.c
